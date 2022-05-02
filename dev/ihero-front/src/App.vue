@@ -37,7 +37,6 @@ export default {
       console.log("deu bom")
     });
     socket.on('event', function(data){
-      console.log("bora carai")
       console.log(data)
     });
     
