@@ -25,6 +25,11 @@ const routes = [
     path: '/edithero/:id',
     name: 'edithero',
     component: () => import('../views/EditHeroView.vue')
+  },
+  {
+    path: '/events',
+    name: 'events',
+    component: () => import('../views/EventsView.vue')
   }
 ]
 

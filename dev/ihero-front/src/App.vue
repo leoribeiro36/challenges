@@ -22,7 +22,7 @@
 </template>
 
 <script>
-// const { io } = require("socket.io-client");
+import axios from "axios";
 
 export default {
   name: 'App',
@@ -32,12 +32,20 @@ export default {
     }
   },
   created: function() {
+    let auth = this.$store.getters.auth
     var socket = require('socket.io-client')('zrp-challenge-socket.herokuapp.com');
     socket.on('connect', function(){
       console.log("deu bom")
     });
-    socket.on('event', function(data){
-      console.log(data)
+    socket.on('occurrence', function(data){
+      if (auth != '') {
+        axios.post('http://localhost:3000/event',
+          data,
+          {
+            headers: {'Authorization': auth }
+          }
+        );
+      }
     });
     
   }
